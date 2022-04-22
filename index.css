@@ -1,0 +1,19 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #263343;
+    padding: 8px 12px;
+}
+.h1{
+    text-align : center;
+
+}
+.h2{
+
+    text-align : center;
+}
+.button{
+
+    text-align : center;
+}
