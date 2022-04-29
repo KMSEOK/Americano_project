@@ -1,3 +1,43 @@
+body {
+    
+    background: #2ecc71;
+    font-size: 62.5%;
+  }
+  
+.container {
+    padding: 2em;
+}
+  
+  /* GENERAL BUTTON STYLING */
+.button,
+button::after {
+    -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+      transition: all 0.3s;
+  }
+  
+  button {
+    background: none;
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+    display: block;
+    font-size: 1.6em;
+    font-weight: bold;
+    margin: 1em auto;
+    padding: 2em 6em;
+    position: relative;
+    text-transform: uppercase;
+  }
+  
+  button:hover {
+    color: #000803;
+  }
+  
+  .btn-1:hover:after {
+    height: 100%;
+  }
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -10,10 +50,6 @@
 
 }
 .h2{
-
-    text-align : center;
-}
-.button{
 
     text-align : center;
 }
