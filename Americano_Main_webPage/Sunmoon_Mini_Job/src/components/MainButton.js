@@ -1,4 +1,5 @@
 import {Link} from 'react-router-dom';
+import mainButton from './MainButton.module.css';
 
 //버튼 컨포넌트
 
@@ -8,22 +9,21 @@ function MainButton(){
 
         <div>
             
-                <button className = 'button'> 
+                <div className= {mainButton.mbutton}>
                     <Link to='/map' style ={{ textDecoration: 'inherit'}}>
-                        <button>위치선택</button>
+                        <button className = {mainButton.button}>위치선택</button>
                     </Link>
                     
                     <Link to='/userinfo' style ={{ textDecoration: 'inherit'}}>
-                        <button>내 정보</button>
+                        <button className = {mainButton.button}>  내 정보</button>
                     
                     </Link>
 
                     <Link to='/joblist' style ={{ textDecoration: 'inherit'}}>
-                        <button>진행중인 알바</button>
+                        <button className = {mainButton.button}>진행중인 알바</button>
                     </Link>
- 
-        
-                </button>
+                </div>
+            
         </div>  
     </header>
     );

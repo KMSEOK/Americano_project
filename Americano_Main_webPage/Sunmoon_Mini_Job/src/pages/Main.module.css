@@ -1,0 +1,28 @@
+/*메인 페이지 디자인*/
+
+.h1{
+    
+    text-align : center;
+
+}
+.h2{
+
+    text-align : center;
+    font-size: 40px;
+}
+.image{
+    width: 150px;
+    height: 150px;
+    display : inline-block;
+    text-align: center;
+  }
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #263343;
+    padding: 8px 12px;
+    text-decoration: none;
+}
+

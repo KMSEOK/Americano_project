@@ -1,0 +1,39 @@
+/*메인 버튼  디자인*/
+
+.button {
+    background: none;
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 3px;
+    color: rgb(255, 255, 255);
+    display: block;
+    font-size: 1.6em;
+    font-weight: bold;
+    margin: 1em auto;
+    padding: 1em 3em;
+    position: relative;
+    text-transform: uppercase;
+    
+  }
+  
+  button:hover {
+    color: #000000;
+  }
+  
+  .btn-1:hover:after {
+    height: 100%;
+  }
+.mbutton{
+    background: none;
+    border-radius: 3px;
+    color: rgb(255, 255, 255);
+    display: block;
+    font-size: 1.6em;
+    font-weight: bold;
+    margin: 1em auto;
+    padding: 1em 3em;
+    position: relative;
+    text-transform: uppercase;
+    border: 3px solid rgb(255, 255, 255);
+    height: 350px;
+    width: 340px;
+}

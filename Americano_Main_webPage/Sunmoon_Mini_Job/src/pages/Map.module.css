@@ -1,0 +1,8 @@
+/*지도 페이지 디자인*/
+
+.image{
+    width: 150px;
+    height: 150px;
+    display : inline-block;
+    text-align: center;
+  }
