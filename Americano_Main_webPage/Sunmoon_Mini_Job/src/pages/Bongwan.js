@@ -1,5 +1,6 @@
 // 게시판 만들기
 import {Link} from 'react-router-dom';
+
 function Bongwan(){
     return(
         <div>
@@ -21,8 +22,13 @@ function Bongwan(){
                         진행중인 알바
                     </button>
                 </Link>
-
-
+                <Link to = '/map/Bongwan/notice'>
+                    <button>
+                        글작성
+                    </button>
+                </Link>
+                
+                
 
 
             </nav>

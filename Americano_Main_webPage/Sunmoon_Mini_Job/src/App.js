@@ -7,6 +7,7 @@ import Main from './pages/Main';
 // 지도 각각 게시판들
 import Bongwan from './pages/Bongwan';
 import Wonhwagwan from './pages/Wonhwagwan';
+import Notice_page from './pages/Notice_page';
 
 
 
@@ -25,6 +26,11 @@ function App() {
           */}
           <Route path ='/map/Bongwan' element={<Bongwan/>}/>
           <Route path ='/map/Wonhwagwan' element={<Wonhwagwan/>}/>
+          
+          {/*
+            본관 페이지에서 게시글 작성
+          */}
+          <Route path ='/map/Bongwan/notice' element={<Notice_page/>}/>
       </Routes> 
       
     </div> 
