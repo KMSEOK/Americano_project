@@ -25,7 +25,7 @@ dummy_jobs = [
         "user_id":3,
         "title": "job1",
         "description": "this is job1.",
-        "place": "honkkan",
+        "place": "honkan",
         "reawrd_money": 1000,
         "reward_item": "game",
         "status": "done",

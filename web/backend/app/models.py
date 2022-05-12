@@ -8,7 +8,8 @@ from sqlalchemy.orm import relationship
 
 Base = declarative_base()
 
-DB_URL = "postgresql://postgres:pass@localhost:15432/app"
+DB_URL = "postgresql://postgres:pass@docker_postgres:5432/app"
+# DB_URL = "postgresql://postgres:pass@localhost:25432/app"
 engine = create_engine(DB_URL)
 Base = declarative_base()
 
@@ -24,7 +25,7 @@ class Users(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String, nullable=False)
     grade = Column(Enum(GradeType))
-    introduction = Column()
+    introduction = Column(String)
     jobs = relationship("Jobs")
 
 class PlaceType(str, enum.Enum):
@@ -49,8 +50,8 @@ class Jobs(Base):
     title = Column(String)
     description = Column(String)
     place = Column(Enum(PlaceType))
-    reawrd_money = Column()
-    reward_item = Column()
+    reawrd_money = Column(Integer)
+    reward_item = Column(String)
     status = Column(Enum(StatusType))
     time_required = Column(Integer, comment="min")
 
@@ -63,11 +64,11 @@ class Transaction(Base):
 
 def init_db():
 
-    Base.metadata.drop_all(engine)
+    # Base.metadata.drop_all(engine)
     Base.metadata.create_all(engine)
 
-    s = Session(bind=engine, autocommit=False, autoflush=False)
-    s.bulk_insert_mappings(Users, dummy_users)
-    s.commit()
-    s.bulk_insert_mappings(Jobs, dummy_jobs)
-    s.commit()
+    # s = Session(bind=engine, autocommit=False, autoflush=False)
+    # s.bulk_insert_mappings(Users, dummy_users)
+    # s.commit()
+    # s.bulk_insert_mappings(Jobs, dummy_jobs)
+    # s.commit()
