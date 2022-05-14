@@ -8,8 +8,7 @@ from sqlalchemy.orm import relationship
 
 Base = declarative_base()
 
-DB_URL = "postgresql://postgres:pass@docker_postgres:5432/app"
-
+DB_URL = "postgresql://postgres:pass@db:5432/app"
 engine = create_engine(DB_URL)
 Base = declarative_base()
 

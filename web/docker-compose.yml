@@ -10,7 +10,7 @@ services:
       POSTGRES_DB: app
       POSTGRES_PASSWORD: pass
     restart: always
-    container_name: docker_postgres
+    # container_name: docker_postgres
   app:
     build: 
       context: ./backend
