@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
-from app.dummy_data import dummy_users, dummy_jobs
+from app.dummy_data import dummy_users, dummy_jobs, dummy_transactions
 from sqlalchemy.orm import Session
 import enum
 from sqlalchemy import Column, Integer, String, Enum, ForeignKey
@@ -9,7 +9,7 @@ from sqlalchemy.orm import relationship
 Base = declarative_base()
 
 DB_URL = "postgresql://postgres:pass@docker_postgres:5432/app"
-# DB_URL = "postgresql://postgres:pass@localhost:25432/app"
+
 engine = create_engine(DB_URL)
 Base = declarative_base()
 
@@ -64,11 +64,13 @@ class Transaction(Base):
 
 def init_db():
 
-    # Base.metadata.drop_all(engine)
+    Base.metadata.drop_all(engine)
     Base.metadata.create_all(engine)
 
-    # s = Session(bind=engine, autocommit=False, autoflush=False)
-    # s.bulk_insert_mappings(Users, dummy_users)
-    # s.commit()
-    # s.bulk_insert_mappings(Jobs, dummy_jobs)
-    # s.commit()
+    s = Session(bind=engine, autocommit=False, autoflush=False)
+    s.bulk_insert_mappings(Users, dummy_users)
+    s.commit()
+    s.bulk_insert_mappings(Jobs, dummy_jobs)
+    s.commit()
+    s.bulk_insert_mappings(Transaction, dummy_transactions)
+    s.commit()

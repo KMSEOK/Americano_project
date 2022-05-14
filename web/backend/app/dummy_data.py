@@ -54,3 +54,21 @@ dummy_jobs = [
         "time_required": 34,
     }
 ]
+
+dummy_transactions = [
+    {
+        "id": 1,
+        "send_user": 2,
+        "receive_user": 3,
+    },
+    {
+        "id": 2,
+        "send_user": 2,
+        "receive_user": 3,
+    },
+    {
+        "id": 3,
+        "send_user": 3,
+        "receive_user": 1,
+    },
+]
