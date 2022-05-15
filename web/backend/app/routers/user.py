@@ -8,6 +8,7 @@ router = APIRouter()
 # def get_users(db: Session = Depends(get_db)):
 @router.get("/get_users", status_code=status.HTTP_200_OK)
 def get_users():
+    # dummy for practice tag.
     # res = db.query(Users).all()
     # print(res)
     return {"msg": "successfully get users."}
