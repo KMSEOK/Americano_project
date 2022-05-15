@@ -1,16 +1,27 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from app.dummy_data import dummy_users, dummy_jobs, dummy_transactions
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, sessionmaker
 import enum
 from sqlalchemy import Column, Integer, String, Enum, ForeignKey
 from sqlalchemy.orm import relationship
 
 Base = declarative_base()
 
-DB_URL = "postgresql://postgres:pass@db:5432/app"
+# DB_URL = "postgresql://postgres:pass@db:5432/app"
+
+DB_URL = "postgresql+psycopg2://postgres:pass@db:5432/app"
 engine = create_engine(DB_URL)
 Base = declarative_base()
+
+session_local = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+# def get_db():
+#     db = session_local()
+#     try:
+#         yield db
+#     finally:
+#         db.close()
 
 class GradeType(str, enum.Enum):
     beginner = "beginner"
