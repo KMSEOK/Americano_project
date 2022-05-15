@@ -5,7 +5,7 @@ log:
 	docker-compose logs -f
 
 up:
-	docker-compose up -d
+	docker-compose up -d && docker ps
 
 reset:
 	docker-compose down && docker-compose up -d && docker-compose up -d && docker ps
