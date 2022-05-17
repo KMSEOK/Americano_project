@@ -58,17 +58,17 @@ dummy_jobs = [
 dummy_transactions = [
     {
         "id": 1000,
-        "send_user": 2000,
-        "receive_user": 3000,
+        "send_user_id": 2000,
+        "receive_user_id": 3000,
     },
     {
         "id": 2000,
-        "send_user": 2000,
-        "receive_user": 3000,
+        "send_user_id": 2000,
+        "receive_user_id": 3000,
     },
     {
         "id": 3000,
-        "send_user": 3000,
-        "receive_user": 1000,
+        "send_user_id": 3000,
+        "receive_user_id": 1000,
     },
 ]

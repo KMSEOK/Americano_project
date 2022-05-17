@@ -57,7 +57,7 @@ class Jobs(Base):
     __tablename__ = 'jobs'
 
     id = Column(Integer, primary_key=True)
-    user_id = Column(ForeignKey("users.id", ondelete="CASCADE"))
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"))
     title = Column(String)
     description = Column(String)
     place = Column(Enum(PlaceType))
@@ -69,8 +69,8 @@ class Jobs(Base):
 class Transaction(Base):
     __tablename__ = "transactions"
     id = Column(Integer, primary_key=True)
-    send_user = Column(ForeignKey("users.id", ondelete="CASCADE"))
-    receive_user = Column(ForeignKey("users.id", ondelete="CASCADE"))
+    send_user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"))
+    receive_user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"))
 
 
 def init_db():
