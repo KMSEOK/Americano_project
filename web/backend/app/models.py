@@ -5,6 +5,9 @@ from sqlalchemy.orm import Session, sessionmaker
 import enum
 from sqlalchemy import Column, Integer, String, Enum, ForeignKey
 from sqlalchemy.orm import relationship
+from sqlalchemy.dialects.postgresql import UUID
+import uuid
+
 
 Base = declarative_base()
 
@@ -16,12 +19,12 @@ Base = declarative_base()
 
 session_local = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-# def get_db():
-#     db = session_local()
-#     try:
-#         yield db
-#     finally:
-#         db.close()
+def get_db():
+    db = session_local()
+    try:
+        yield db
+    finally:
+        db.close()
 
 class GradeType(str, enum.Enum):
     beginner = "beginner"
@@ -31,12 +34,10 @@ class GradeType(str, enum.Enum):
 class Users(Base):
     
     __tablename__ = 'users'
-
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String, nullable=False)
     grade = Column(Enum(GradeType))
     introduction = Column(String)
-    jobs = relationship("Jobs")
 
 class PlaceType(str, enum.Enum):
     honkan = "honkan"
@@ -56,7 +57,7 @@ class Jobs(Base):
     __tablename__ = 'jobs'
 
     id = Column(Integer, primary_key=True)
-    user_id = Column(ForeignKey("users.id"))
+    user_id = Column(ForeignKey("users.id", ondelete="CASCADE"))
     title = Column(String)
     description = Column(String)
     place = Column(Enum(PlaceType))
@@ -68,8 +69,8 @@ class Jobs(Base):
 class Transaction(Base):
     __tablename__ = "transactions"
     id = Column(Integer, primary_key=True)
-    send_user = Column(ForeignKey("users.id"))
-    receive_user = Column(ForeignKey("users.id"))
+    send_user = Column(ForeignKey("users.id", ondelete="CASCADE"))
+    receive_user = Column(ForeignKey("users.id", ondelete="CASCADE"))
 
 
 def init_db():

@@ -8,4 +8,8 @@ up:
 	docker-compose up -d && docker ps
 
 reset:
-	docker-compose down && docker-compose up -d && docker-compose up -d && docker ps
+	docker-compose down
+	docker-compose up -d
+	docker ps
+	docker-compose up -d
+	docker ps
