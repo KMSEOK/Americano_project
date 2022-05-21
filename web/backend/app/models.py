@@ -8,7 +8,6 @@ from sqlalchemy.orm import relationship
 from sqlalchemy.dialects.postgresql import UUID
 import uuid
 
-
 Base = declarative_base()
 
 # DB_URL = "postgresql://postgres:pass@db:5432/app"
@@ -32,7 +31,6 @@ class GradeType(str, enum.Enum):
     advance = "advance"
 
 class Users(Base):
-    
     __tablename__ = 'users'
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String, nullable=False)
