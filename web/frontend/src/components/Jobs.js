@@ -1,33 +1,23 @@
 import React from 'react'
-import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import Job from './Job';
 
-const Jobs = () => {
-  const [ jobs, setJobs ] = useState([]);
-  const [ loading, setLoading ] = useState(false);
-
-  const fetchJobs = async () => {
-    const res = await fetch("http://localhost:8080/api/v1/jobs");
-    const tmp = await res.json();
-    console.log(tmp);
-    setJobs(tmp);
-  }
-
-  useEffect(() => {
-    setLoading(true);
-    fetchJobs();
-    setLoading(false);
-  }, [])
+const Jobs = (props) => {
+  
+  const params = useParams()
+  const jobs = props.jobs.filter(job => job.place === params.place); 
+  console.log(jobs);
 
   return (
     <div>
-      { loading ? (
-        <div>loading...</div>
+      { jobs.length === 0 ? (
+        <div>no results.</div>
         ) : (
           <div>
             { 
               jobs.map(job => (
-                <div> { job.title } </div>
-            ))
+                <Job job={job}/>
+              ))
             }
           </div> 
         )

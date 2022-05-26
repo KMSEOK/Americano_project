@@ -6,15 +6,14 @@ from app.routers import user, job
 
 app = FastAPI()
 
-
-origins = ["http://localhost:3000", "localhost:3000"]
+origins = ["http://localhost:3030", "localhost:3030", "http://localhost:3000", "localhost:3000"]
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
-    allow_headers=["*"]
+    allow_headers=["*"],
 )
 
 app.include_router(user.router, prefix="/api/v1/users")
