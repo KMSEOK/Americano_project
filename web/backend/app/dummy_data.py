@@ -1,21 +1,32 @@
+from passlib.context import CryptContext
+
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
+def get_password_hash(password: str) -> str:
+    return pwd_context.hash(password)
+
+
 dummy_users = [
     {
         "id": 1000,
         "name": "taro",
         "grade": "normal",
         "introduction": "hello from taro.",
+        "hashed_password": get_password_hash("aaa"),
     },
     {
         "id": 2000,
         "name": "jiro",
         "grade": "advance",
         "introduction": "hello from jiro.",
+        "hashed_password": get_password_hash("aaa"),
     },
     {
         "id": 3000,
         "name": "ken",
         "grade": "beginner",
         "introduction": "hello from ken.",
+        "hashed_password": get_password_hash("aaa"),
     },
 ]
 

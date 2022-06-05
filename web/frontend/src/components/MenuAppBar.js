@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useState, useContext } from 'react';
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import { Link } from "react-router-dom";
+import { Context } from './Context'
 
-const MenuAppBar = () => {
+const MenuAppBar = (props) => {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -19,6 +20,15 @@ const MenuAppBar = () => {
             </Nav.Link>
             <Nav.Link>
               <Link to="/mypage" style={{textDecoration: 'none', color: 'gray'}}>MyPage</Link>
+            </Nav.Link>
+            <Nav.Link>
+              {
+                props.currentUser !== null ? (
+                  <Link to="#" style={{textDecoration: 'none', color: 'gray'}}>Logout</Link>
+                ) : (
+                  <Link to="/login" style={{textDecoration: 'none', color: 'gray'}}>Login</Link>
+                )
+              }
             </Nav.Link>
          </Nav>
         </Navbar.Collapse>

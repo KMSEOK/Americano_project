@@ -1,5 +1,5 @@
 from fastapi import APIRouter, status, Depends, HTTPException
-from ..schemas import JobOut, JobCreate
+from ..schemes import JobOut, JobCreate
 from ..models import Jobs, get_db
 from sqlalchemy.orm import Session
 

@@ -4,9 +4,6 @@ from app.dummy_data import dummy_users, dummy_jobs, dummy_transactions
 from sqlalchemy.orm import Session, sessionmaker
 import enum
 from sqlalchemy import Column, Integer, String, Enum, ForeignKey
-from sqlalchemy.orm import relationship
-from sqlalchemy.dialects.postgresql import UUID
-import uuid
 
 Base = declarative_base()
 
@@ -18,6 +15,7 @@ Base = declarative_base()
 
 session_local = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
+
 def get_db():
     db = session_local()
     try:
@@ -25,17 +23,21 @@ def get_db():
     finally:
         db.close()
 
+
 class GradeType(str, enum.Enum):
     beginner = "beginner"
     normal = "normal"
     advance = "advance"
 
+
 class Users(Base):
-    __tablename__ = 'users'
+    __tablename__ = "users"
     id = Column(Integer, primary_key=True, autoincrement=True)
-    name = Column(String, nullable=False)
-    grade = Column(Enum(GradeType))
+    name = Column(String, nullable=False, unique=True)
+    hashed_password = Column(String, nullable=False)
+    grade = Column(Enum(GradeType), default="normal")
     introduction = Column(String)
+
 
 class PlaceType(str, enum.Enum):
     honkan = "honkan"
@@ -45,14 +47,16 @@ class PlaceType(str, enum.Enum):
     chayonkan = "chayonkan"
     konhakkan = "konhakkan"
 
+
 class StatusType(str, enum.Enum):
     done = "done"
     preparing = "preparing"
     inprogress = "inprogress"
 
+
 class Jobs(Base):
 
-    __tablename__ = 'jobs'
+    __tablename__ = "jobs"
 
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"))
@@ -63,6 +67,7 @@ class Jobs(Base):
     reward_item = Column(String)
     status = Column(Enum(StatusType))
     time_required = Column(Integer, comment="min")
+
 
 class Transaction(Base):
     __tablename__ = "transactions"
